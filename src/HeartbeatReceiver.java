@@ -15,7 +15,7 @@ public class HeartbeatReceiver {
         long lastUpdatedTime;
         long timer;
 
-        // Networking setup
+        // Network setup
         ServerSocket server = new ServerSocket(33075);
         System.out.println("Waiting for clients...");
         Socket client = server.accept();
@@ -28,15 +28,18 @@ public class HeartbeatReceiver {
         // Update time
         lastUpdatedTime = System.currentTimeMillis();
 
-        // Heartbeat listener
+        // Heartbeat Monitor
         while(true){
+
             timer = System.currentTimeMillis() - lastUpdatedTime;
             line = reader.readLine();
+
             if(line != null){
                 // Heartbeat is alive
                 System.out.println(line);
                 lastUpdatedTime = System.currentTimeMillis();
             }
+
             if(timer > expireTime*1000){
                 // Time expired
                 System.out.println("Warning: The sender is down, action needed.");
