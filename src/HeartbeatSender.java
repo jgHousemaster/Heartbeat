@@ -29,6 +29,7 @@ public class HeartbeatSender {
 
         while(true){
             timer = (System.currentTimeMillis() - startTime);
+            //SEND
             writer.println("System Running for: " + timer + " ms.");
             // Pit-a-pat
             writer.flush();

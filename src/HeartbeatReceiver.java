@@ -32,6 +32,7 @@ public class HeartbeatReceiver {
         while(true){
 
             timer = System.currentTimeMillis() - lastUpdatedTime;
+            // RECEIVE
             line = reader.readLine();
 
             if(line != null){
@@ -40,6 +41,7 @@ public class HeartbeatReceiver {
                 lastUpdatedTime = System.currentTimeMillis();
             }
 
+            // MONITOR
             if(timer > expireTime*1000){
                 // Time expired
                 System.out.println("Warning: The sender is down, action needed.");
